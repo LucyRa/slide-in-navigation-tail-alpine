@@ -10,6 +10,122 @@
   <script src="./main.js"></script>
 </head>
 <body x-data="{ navOpen: false }">
-  
+  <nav class="slide-in-nav">
+    <div class="nav-bar">
+      <div class="nav-logo"></div>
+
+      <button class="nav-control">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="nav-slide-panel">
+      <div class="nav-items-container" x-data="{
+        navigation: {
+          navItems: [
+            {
+              name: 'Home',
+              url: '/',
+              aria: 'Navigate to homepage',
+              active: true,
+            },
+            {
+              name: 'About Us',
+              url: '/',
+              aria: 'Navigate to About us',
+              active: false,
+            },
+            {
+              name: 'Our Projects',
+              url: '/',
+              aria: 'Navigate to Our projects',
+              active: false,
+            },
+            {
+              name: 'Developer Guides',
+              url: '/',
+              aria: 'Navigate to Developer guides',
+              active: false,
+            },
+            {
+              name: 'Free Components',
+              url: '/',
+              aria: 'Navigate to Components hub',
+              active: false,
+            },
+            {
+              name: 'Reccomended Resources',
+              url: '/',
+              aria: 'Navigate to Reccomended resources',
+              active: false,
+            },
+          ],
+          navActions: {
+            telephone: {
+              name: '07123456789',
+              url: 'tel:+447123456789',
+              aria: 'Call us now',
+            },
+            email: {
+              name: 'info@email.com',
+              url: 'mailto:info@email.com',
+              aria: 'Send us an email',
+            },
+            callToAction: {
+              name: 'Get in touch',
+              url: '/',
+              aria: 'Navigate to the contact page',
+            },
+          },
+          navSocialItems: {
+            github: {
+              url: 'https://github.com/LucyRa/slide-in-navigation/blob/main/README.md',
+              aria: 'Navigate to project GitHub repo',
+            },
+            instagram: {
+              url: 'https://www.instagram.com/lramplin/',
+              aria: 'Navigate to the LRamplin Instagram profile',
+            },
+          },
+        }
+      }">
+        <template x-for="(item, index) in navigation.navItems" :key="index">
+          <a :href="item.url" :aria-label="item.aria" class="nav-item" :class="item.active ? 'active' : ''" x-text="item.name"></a>
+        </template>
+      </div>
+
+      <div class="nav-actions-container">
+        <a href="tel:+447123456789" aria-label="Call us now" class="nav-action">
+          <span class="telephone">
+            07123456789
+          </span>
+        </a>
+
+        <a href="mailto:info@email.com" aria-label="Email us now" class="nav-action">
+          <span class="email">
+            info@email.com
+          </span>
+        </a>
+
+        <a href="/" aria-label="Navigate to the Contact page" class="nav-action">
+          <button class="btn-solid">
+            Contact us
+          </button>
+        </a>
+      </div>
+
+      <div class="nav-social-container">
+        <a href="https://github.com/LucyRa/slide-in-navigation/blob/main/README.md" aria-label="Navigate to the projects GitHub repository" class="nav-social-item">
+          <img src="github.svg" />
+        </a>
+
+        <a href="https://www.instagram.com/lramplin/" aria-label="Navigate to the LRamplin Instagram profile" class="nav-social-item">
+          <img src="insta.svg" />
+        </a>
+      </div>
+    </div>
+  </nav>
 </body>
 </html>
